@@ -262,9 +262,6 @@ def machine_learning(number):
 
     y_train = np.array(y_train)
     y_test = np.array(y_test)
-    shuffle_indices = np.random.permutation(np.arange(len(y_train)))
-    x_shuffled = x_train[shuffle_indices]
-    y_shuffled = y_train[shuffle_indices]
 
     sequence_input = Input(shape = (48
     ,))
