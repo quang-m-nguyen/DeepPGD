@@ -1,52 +1,30 @@
-from asyncio import protocols, streams
-from cgi import test
-from copy import deepcopy
-from msvcrt import setmode
-from multiprocessing.dummy import active_children
-from subprocess import list2cmdline
-from tkinter import Y
-from turtle import pos
-from tensorflow.keras import Model, layers, initializers
-from unicodedata import bidirectional
+import time
+
+import numpy as np
+import pandas as pd
 import tensorflow as tf
-from tensorflow import keras
-import numpy as np
-import jieba
-import pandas as pd
-from keras.layers import Dense,Input,Flatten,Dropout
-from keras.layers import Conv1D, MaxPooling1D, Embedding, concatenate
-from keras.preprocessing.text import Tokenizer,one_hot
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from keras.models import Model
-import pandas as pd
-import os
-import numpy as np
-import re
-from keras.layers import LSTM,LayerNormalization
-from keras.layers import GRU
-from keras.optimizers import SGD
-from keras.optimizers import Adam
 from keras.callbacks import Callback
-from keras.layers import Bidirectional
-import numpy as np
-from scipy import interp
-import matplotlib.pyplot as plt
-from itertools import cycle
-from sklearn.metrics import roc_curve, auc
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report
+
 # from keras_self_attention import SeqSelfAttention
 # from keras.utils import to_categorical
-from keras.layers import CuDNNLSTM,CuDNNGRU
-from keras import backend as K
-from keras.layers import Input,Dense,Dropout,Conv2D,MaxPool2D,Flatten,GlobalAvgPool2D,concatenate,BatchNormalization,Activation,Add,ZeroPadding2D,Lambda
-from keras.layers import Dense,Dropout,Conv2D,MaxPooling2D,Flatten,BatchNormalization,Activation,LayerNormalization
-import csv
+from keras.layers import (
+    Bidirectional,
+    Conv1D,
+    CuDNNLSTM,
+    Dense,
+    Dropout,
+    Embedding,
+    Flatten,
+    Input,
+    LayerNormalization,
+    concatenate,
+)
+from keras.models import Model
+from keras.preprocessing.text import Tokenizer
+from sklearn.metrics import matthews_corrcoef, roc_auc_score
+from tensorflow.keras import Model, initializers, layers
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-from sklearn.metrics import matthews_corrcoef,roc_auc_score
-
-import time
-import datetime
 # 使用cpu进行模型训练
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"  
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
