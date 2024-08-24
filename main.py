@@ -22,7 +22,7 @@ from keras.layers import (
 from keras.models import Model
 from keras.preprocessing.text import Tokenizer
 from sklearn.metrics import matthews_corrcoef, roc_auc_score
-from tensorflow.keras import Model, initializers, layers
+from tensorflow.keras import initializers, layers
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # 使用cpu进行模型训练
@@ -51,7 +51,6 @@ def machine_learning(number):
     
     # train_data = pd.read_csv(r"C:\Users\小米笔记本pro\Desktop\RBP-31\02_train.csv",header = None)
     # test_data  = pd.read_csv(r"C:\Users\小米笔记本pro\Desktop\RBP-31\02_test.csv",header = None)
-    file_num = '%d' % number
     train_filename = 'C:/Users/deeplearning/Desktop/MaskDNA-PGD-main/MaskDNA-PGD-main/data/DNA_MS/tsv/4mC/4mC_C.equisetifolia/train.tsv'
     test_filename = 'C:/Users/deeplearning/Desktop/MaskDNA-PGD-main/MaskDNA-PGD-main/data/DNA_MS/tsv/4mC/4mC_F.vesca/test.tsv'
 
@@ -129,7 +128,6 @@ def machine_learning(number):
 
     K = 3
     str_array = []
-    loopcnt = 0
     for i in pro_x_data:
         seq_str = str(i)
         seq_str = seq_str.strip('[]\'')
@@ -481,24 +479,18 @@ def machine_learning(number):
                             epoch_pred[i][j]=1
                         else:
                             epoch_pred[i][j]=0
-            # print()
             # print("epoch[",epoch+1,"].pred:\n", classification_report(y_test, epoch_pred, digits=5))
             # my_valacc = logs.get('val_accuracy')
-            #
             my_valacc = self.last_epoch_logs.get('val_accuracy', 0)
-            print()
             if my_valacc > best_acc:
                 best_acc = my_valacc
             print("epoch[",epoch,"].val_accuracy:", my_valacc)
             print("epoch[",epoch,"].best_accuracy:", best_acc)
-            print()
-            print()
             
 
     auc_mcc_callback = AUCMCCCallback(validation_data=(x_test, y_test))
     model.fit(x_train,y_train,
             batch_size = 30,
-            # epochs = 100,
             epochs = 100,
             validation_data = (x_test,y_test),
             callbacks=[auc_mcc_callback])
